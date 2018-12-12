@@ -1,27 +1,27 @@
-#ifndef LINEARLIST_CPP_COM_YYUZE_SL_SEQUENTIALLIST_H_
-#define LINEARLIST_CPP_COM_YYUZE_SL_SEQUENTIALLIST_H_
+#ifndef LINEARLIST_CPP_COM_YYUZE_SL_SEQUENTIAL_LIST_H_
+#define LINEARLIST_CPP_COM_YYUZE_SL_SEQUENTIAL_LIST_H_
 #include<iostream>
 using namespace std;
 template<class T>
 class SequentialList
 {
-private: 
+private:
 	T* addr;
 	int length;
 public:
-	SequentialList() 
+	SequentialList()
 	{
 		this->addr = new T();
 	}
-	
-	~SequentialList() 
+
+	~SequentialList()
 	{
 		this->clearList();
-	} 
+	}
 
 	void clearList() {
 		for (int i = 0; i < this->length; ++i) {
-			*(this->addr + i)=0;
+			*(this->addr + i) = 0;
 		}
 	}
 
@@ -49,7 +49,7 @@ public:
 		T temp = *(this->addr + index);
 		for (int i = index; i < this->length; ++i) {
 			T t = *(this->addr + i + 1);
-			*(this->addr + i + 1 )= temp;
+			*(this->addr + i + 1) = temp;
 			temp = t;
 		}
 		*(this->addr + index) = element;
@@ -68,10 +68,10 @@ public:
 
 	void traverse() {
 		for (int i = 0; i < this->length; ++i) {
-			cout << *(this->addr + i )<< endl;
+			cout << *(this->addr + i) << endl;
 		}
 	}
-	
+
 	SequentialList<T>& clone() {
 		SequentialList<T>* newList = new SequentialList<T>();
 		for (int i = 0; i < this->length; i++) {
@@ -85,7 +85,7 @@ public:
 			bool sortedFlag = true;
 			for (int j = 0; j < length - i - 1; ++j) {
 				if (*(this->addr + j) > *(this->addr + j + 1)) {
-					T temp = *(this->addr + j + 1); 
+					T temp = *(this->addr + j + 1);
 					*(this->addr + j + 1) = *(this->addr + j);
 					*(this->addr + j) = temp;
 					sortedFlag = false;
