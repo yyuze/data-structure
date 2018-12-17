@@ -50,11 +50,11 @@ public:
 			return false;
 		}
 		else {
-			Node& preNode = this->getValueAt(index - 1);
+			Node& preNode = this->getNodeAt(index - 1);
 			Node& nextNode = preNode.getNext();
 			Node& node = *(new Node());
-			preNode.setNext(node)
-				node.setValue(nodeValue);
+			preNode.setNext(node);
+			node.setValue(nodeValue);
 			node.setNext(nextNode);
 			++this->length;
 			return true;
@@ -77,7 +77,7 @@ public:
 		if (index <= 0) {
 			return false;
 		}
-		Node& node = this->getValueAt(index - 1);
+		Node& node = this->getNodeAt(index - 1);
 		node.setNext(node.getNext().getNext());
 		return true;
 
@@ -88,7 +88,7 @@ public:
 			return false;
 		}
 
-		this->getValueAt(index).setValue(nodeValue);
+		this->getNodeAt(index).setValue(nodeValue);
 		return true;
 
 	}
@@ -106,24 +106,12 @@ public:
 		return -1;
 	}
 
-	Node& getValueAt(int index) {
-		if (index <= 1) {
-			index = 1;
-		}
-		if (index > this->length) {
-			index = this->length;
-		}
-		Node& node = this->head;
-		for (int count = 0; count < index; count++) {
-			node = node.getNext();
-		}
-		return node.getValue();
-	}
 
 	void traversePrint() {
 		Node& node = this->head.getNext();
 		for (int i = 0; i < this->length; i++) {
-			cout << node.getValue() << " " << end;
+			cout << node.getValue() << "->" << end;
+			node = node.next();
 		}
 		count << "" << endl;
 	}
@@ -141,5 +129,24 @@ public:
 			t2.setNext(t1);
 		}
 		this->head.setNext(t2);
+	}
+
+	T getValueAt(int index) {
+		return this->getNodeAt(index).getValue();
+	}
+
+private:
+	Node& getNodeAt(int index) {
+		if (index <= 1) {
+			index = 1;
+		}
+		if (index > this->length) {
+			index = this->length;
+		}
+		Node& node = this->head;
+		for (int count = 0; count < index; count++) {
+			node = node.getNext();
+		}
+		return node;
 	}
 };
