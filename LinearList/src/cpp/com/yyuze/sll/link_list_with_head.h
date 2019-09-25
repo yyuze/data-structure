@@ -1,10 +1,13 @@
 #pragma once
 #include<iostream>
+#include<string>
 using namespace std;
 template<class T>
 class LinkListWithHead {
 
 private:
+
+
 	class Node {
 
 	private:
@@ -13,6 +16,10 @@ private:
 		Node& next;
 
 	public:
+
+
+	
+
 		void setValue(T value) {
 			this->value = value;
 		}
@@ -28,13 +35,22 @@ private:
 		T getValue() {
 			return this->value;
 		}
+
+		friend ostream& operator<<(ostream& out, Node& node) {
+			out << node.getValue() + "";
+			return out;
+		}
 	};
 
 	Node& head;
 
 	int length;
 
+
 public:
+
+
+
 	LinkListWithHead() {
 		this->head = *(new Node());
 		this->head.setNext(nullptr);
@@ -66,10 +82,10 @@ public:
 		while (n.getNext() != nullptr) {
 			n = n.getNext();
 		}
-		n.setNext(node);
 		Node& node = *(new Node());
 		node.setValue(nodeValue);
 		node.setNext(nullptr);
+		n.setNext(node);
 		++this->length;
 	}
 
@@ -79,6 +95,7 @@ public:
 		}
 		Node& node = this->getNodeAt(index - 1);
 		node.setNext(node.getNext().getNext());
+		--this->length;
 		return true;
 
 	}
@@ -100,20 +117,21 @@ public:
 			if (node.getValue() == nodeValue) {
 				return count;
 			}
-			node = node.next;
+			node = node.getNext();
 			count++;
 		}
 		return -1;
 	}
 
-
+	
 	void traversePrint() {
+
 		Node& node = this->head.getNext();
 		for (int i = 0; i < this->length; i++) {
-			cout << node.getValue() << "->" << end;
-			node = node.next();
+			cout << node << "->" << end;
+			node = node.getNext();
 		}
-		count << "" << endl;
+		cout << "" << endl;
 	}
 
 	void reverseList() {

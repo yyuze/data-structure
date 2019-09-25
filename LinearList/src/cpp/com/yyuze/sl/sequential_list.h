@@ -2,7 +2,7 @@
 #define LINEARLIST_CPP_COM_YYUZE_SL_SEQUENTIAL_LIST_H_
 #include<iostream>
 using namespace std;
-template<class T>
+template<typename T>
 class SequentialList
 {
 private:
