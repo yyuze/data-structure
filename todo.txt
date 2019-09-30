@@ -1,0 +1,5 @@
+1.Modify stack permutation problem
+
+2.reverse Polish notation (RPN)
+	1.1 Convert infix expression to postfix expression
+	1.2 Calculate postfix expression
