@@ -5,3 +5,15 @@
 	1.2 Calculate postfix expression
 	
 3.Hanoi Tower
+
+4.string matching: KMP,BM
+
+5.Linear store loacation of 3(n)-dimension array(that is, location of a[i][j][k] from &a)
+
+6.Building a Thread-Traverse binary-tree
+
+7.forest or tree to binary-tree(binary-tree to forest)
+
+8.depth-first traverse of forest or tree
+
+9.breadth first traverse of forest or tree  
